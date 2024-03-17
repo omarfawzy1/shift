@@ -69,7 +69,7 @@ import Chat from './Chat.vue'
         console.log("Changing room")
         //this.show=false
         Store.setRoomId(roomId)
-        window.location.href = window.location.href.replace(window.location.pathname, "/" + roomId)
+        window.location.href = window.location.href.replace(window.location.pathname, "shift/" + roomId)
         //this.$refs.chatCom.getMessages()
         //this.show=true
       },
