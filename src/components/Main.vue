@@ -69,7 +69,10 @@ import Chat from './Chat.vue'
         console.log("Changing room")
         //this.show=false
         Store.setRoomId(roomId)
-        window.location.href = window.location.href.replace(window.location.pathname, "shift/" + roomId)
+        const params = new URLSearchParams(window.location.search);
+        params.set('roomId', roomId);
+
+        window.location.href = window.location.origin + window.location.pathname + '?' + params.toString()
         //this.$refs.chatCom.getMessages()
         //this.show=true
       },
@@ -82,7 +85,9 @@ import Chat from './Chat.vue'
     },
     beforeMount(){
       this.getRooms()
-      let room = window.location.pathname.replace('/', '').trim()
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const room = urlParams.get('roomId')
       console.log(room)
       Store.setRoomId(room)
     }
